@@ -1,4 +1,4 @@
-#importando biblioteca brian
+#importando neuro simulador Brian2
 from brian2 import*
 from matplotlib import*
 
@@ -6,22 +6,26 @@ from matplotlib import*
 tau = 20*ms
 vrest = -60.0*mV
 R = 100*Mohm
+
+#equação diferencial do modelo de neurõnio LIF (Leaky Integrate-and-Fire)
+#I = corrente do tipo degrau, ligada em 50ms e desligada em 250ms
 eqs = '''
     dv/dt = (-(v-vrest) + R*I)/tau:volt
     I = 0.25*nA*(t>=50*ms) - 0.25*nA*(t>=250*ms):amp
 '''
 
+
 #criando grupo com n=1 neurônio, com as propriedades abaixo 
 neuron = NeuronGroup(1, eqs, threshold= 'v> -50.0*mV', reset = 'v = vrest', refractory = 5*ms, method = 'euler')
 
-#neurônio sendo inicializado com o valor de repouso
+#voltagem inicial do neurônio sendo inicializada com o valor de repouso
 neuron.v = vrest
 
-#gravando as variáveis 'V'(voltagem) e 'I' (corrente)
+#armazenando as variáveis 'V'(voltagem) e 'I' (corrente)
 state_m = StateMonitor(neuron, 'v', record = True)
 state_i = StateMonitor(neuron, 'I', record = True)
 
-#gravando os spikes
+#armazenando os momentos dos spikes
 spike_mon = SpikeMonitor(neuron)
 
 #roda a simulação
