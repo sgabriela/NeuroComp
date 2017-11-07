@@ -1,5 +1,5 @@
 # NeuroComp
-Applying concepts of Computational Neuroscience using neuro simulators
+Applying concepts of Computational Neuroscience using neuro simulator BRIAN2 for python
 
 * Read: 
 
