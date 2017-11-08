@@ -8,6 +8,7 @@ $ python ex1.py
 ```
 
 * Simulating:
+
 ![readme](https://user-images.githubusercontent.com/29184806/32528992-06978c24-c41d-11e7-97a2-0a96251a52e5.png)
 
 * Plot:
